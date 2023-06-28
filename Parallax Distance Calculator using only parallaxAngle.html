@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parallax Distance Calculator for long therm </title>
+    <title> The reson why the Calculator doesn't have baseline because when the object that has long distance from earth the baseline is geting smaller and smaller </title>
+    <style>
+        body {
+          font-family: Times New Roman, Times, serif;
+          margin: 20px;
+        }
+    
+        label {
+          display: block;
+          margin-bottom: 10px;
+        }
+    
+        input[type="number"] {
+          padding: 5px;
+          width: 200px;
+        }
+    
+        button {
+          padding: 10px;
+          background-color: #c200f3;
+          border: none;
+          color: rgb(255, 255, 255);
+          cursor: pointer;
+        }
+    
+        #resultParsecs,
+        #resultLightYears,
+        #resultAU {
+          margin-top: 20px;
+          font-weight: bold;
+        }
+    </style>
+    <script>
+        function calculateDistance() {
+            var parallaxAngle = parseFloat(document.getElementById("parallaxAngle").value);
+            
+            // Convert the parallax angle from degrees to radians
+            var parallaxAngle = parallaxAngle * (Math.PI / 3600);
+            
+            // Calculate the distance using the formula: distance = 1 / tan(parallaxAngle)
+            var distanceParsecs = 1 / Math.tan(parallaxAngle);
+            
+            // Convert distance from parsecs to light years
+            var distanceLightYears = distanceParsecs * 3.26;
+            
+            // Convert distance from parsecs to astronomical units (AU)
+            var distanceAU = distanceParsecs * 206265;
+            
+            // Display the calculated distances
+            document.getElementById("resultParsecs").innerHTML = "Distance to the object: " + distanceParsecs.toFixed(2) + " parsecs";
+            document.getElementById("resultLightYears").innerHTML = "Distance to the object: " + distanceLightYears.toFixed(2) + " light years";
+            document.getElementById("resultAU").innerHTML = "Distance to the object: " + distanceAU.toFixed(2) + " AU";
+        }
+    </script>
+</head>
+<body>
+    <h1>Parallax Distance</h1>
+    
+    <label for="parallaxAngle">Parallax Angle (in arcsecond):</label>
+    <input type="number" id="parallaxAngle">
+    <button onclick="calculateDistance()">Calculate</button>
+    
+    <div id="resultParsecs"></div>
+    <div id="resultLightYears"></div>
+    <div id="resultAU"></div>
+</body>
+</html>

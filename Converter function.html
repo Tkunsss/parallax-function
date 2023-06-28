@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unit Conversion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      padding: 5px;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #00ff08;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Unit Conversion</h1>
+
+  <h2>Degree to Arcsecond Conversion</h2>
+  <label for="degree">Degree:</label>
+  <input type="number" id="degree" step="any" placeholder="Enter the degree">
+  <button onclick="convertDegreeToArcsecond()">Convert</button>
+  <div id="resultDegreeToArcsecond"></div>
+
+  <h2>Arcsecond to Degree Conversion</h2>
+  <label for="arcsecond">Arcsecond:</label>
+  <input type="number" id="arcsecond" step="any" placeholder="Enter the arcsecond">
+  <button onclick="convertArcsecondToDegree()">Convert</button>
+  <div id="resultArcsecondToDegree"></div>
+
+  <h2>Parsec to Light Year, AU, and km Conversion</h2>
+  <label for="parsec">Parsec:</label>
+  <input type="number" id="parsec" step="any" placeholder="Enter the parsec">
+  <button onclick="convertParsec()">Convert</button>
+  <div id="resultParsec"></div>
+
+  <h2>Light Year to Parsec, AU, and km Conversion</h2>
+  <label for="lightYear">Light Year:</label>
+  <input type="number" id="lightYear" step="any" placeholder="Enter the light year">
+  <button onclick="convertLightYear()">Convert</button>
+  <div id="resultLightYear"></div>
+
+  <h2>Kilometer (km) to Parsec Conversion</h2>
+  <label for="km">Kilometer:</label>
+  <input type="number" id="km" step="any" placeholder="Enter the kilometer">
+  <button onclick="convertKilometer()">Convert</button>
+  <div id="resultKilometer"></div>
+
+  <script>
+    function convertDegreeToArcsecond() {
+      const degreeInput = document.getElementById("degree");
+      const resultElement = document.getElementById("resultDegreeToArcsecond");
+
+      const degree = parseFloat(degreeInput.value);
+
+      if (isNaN(degree)) {
+        resultElement.textContent = "Please enter a valid degree.";
+      } else {
+        const arcsecond = degree * 3600;
+        resultElement.textContent = `${degree} degree is equal to ${arcsecond} arcseconds.`;
+      }
+    }
+
+    function convertArcsecondToDegree() {
+      const arcsecondInput = document.getElementById("arcsecond");
+      const resultElement = document.getElementById("resultArcsecondToDegree");
+
+      const arcsecond = parseFloat(arcsecondInput.value);
+
+      if (isNaN(arcsecond)) {
+        resultElement.textContent = "Please enter a valid arcsecond.";
+      } else {
+        const degree = arcsecond / 3600;
+        resultElement.textContent = `${arcsecond} arcseconds is equal to ${degree} degree.`;
+      }
+    }
+
+    function convertParsec() {
+      const parsecInput = document.getElementById("parsec");
+      const resultElement = document.getElementById("resultParsec");
+
+      const parsec = parseFloat(parsecInput.value);
+
+      if (isNaN(parsec)) {
+        resultElement.textContent = "Please enter a valid parsec.";
+      } else {
+        const lightYear = parsec * 3.26156;
+        const au = parsec * 206264.806247;
+        const km = parsec * 3.086e+13;
+        resultElement.textContent = `${parsec} parsec is equal to ${lightYear} light years, ${au} AU, and ${km} kilometers.`;
+      }
+    }
+
+    function convertLightYear() {
+      const lightYearInput = document.getElementById("lightYear");
+      const resultElement = document.getElementById("resultLightYear");
+
+      const lightYear = parseFloat(lightYearInput.value);
+
+      if (isNaN(lightYear)) {
+        resultElement.textContent = "Please enter a valid light year.";
+      } else {
+        const parsec = lightYear / 3.26156;
+        const au = lightYear * 63241.077088;
+        const km = lightYear * 9.461e+12;
+        resultElement.textContent = `${lightYear} light years is equal to ${parsec} parsecs, ${au} AU, and ${km} kilometers.`;
+      }
+    }
+
+    function convertKilometer() {
+      const kmInput = document.getElementById("km");
+      const resultElement = document.getElementById("resultKilometer");
+
+      const km = parseFloat(kmInput.value);
+
+      if (isNaN(km)) {
+        resultElement.textContent = "Please enter a valid kilometer.";
+      } else {
+        const parsec = km / 3.086e+13;
+        resultElement.textContent = `${km} kilometers is equal to ${parsec} parsecs.`;
+      }
+    }
+  </script>
+</body>
+</html>
