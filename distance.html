@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Parallax Distance Calculator in short therm </title>
+  <style> 
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  padding: 5px;
+  width: 200px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Parallax Angle Calculator</h1>
+<label for="baseline">Baseline (in astronomical units):</label>
+<input type="number" id="baseline" step="any" placeholder="Enter the baseline">
+
+<label for="distance">Distance (AU):</label>
+<input type="number" id="distance" step="any" placeholder="Enter the distance">
+
+<button onclick="calculateAngle()">Calculate Angle</button>
+
+  <div id="result"></div>
+  <script>
+    function calculateAngle() {
+      const baselineInput = document.getElementById("baseline");
+      const distanceInput = document.getElementById("distance");
+      const resultElement = document.getElementById("result");
+
+      const baseline = parseFloat(baselineInput.value);
+      const distance = parseFloat(distanceInput.value);
+
+      if (isNaN(baseline) || isNaN(distance)) {
+        resultElement.textContent = "Please enter valid numbers.";
+      } else {
+        const angle = baseline / distance;
+        resultElement.textContent = `The angle of parallax is approximately ${angle.toFixed(2)} arcseconds.`;
+      }
+    }
+  </script>
+</body>
+</html>
